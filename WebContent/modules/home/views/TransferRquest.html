@@ -1,0 +1,208 @@
+<div class="row usertxt">
+	<div class="container">
+		<div class="col-md-12 col-sm-12 col-xs-12 text-right">
+			<div class="userinfo">
+				Welcome <span class="username">  </span>
+				 <a href="#/login" class="btn btn-default logout-btn">logout</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div class="row darkred">
+	<div class="container">
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<p> Global Funds Transfer</p>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6 text-right">
+			<p class="usermsg">
+				<a >Your Message <span class="glyphicon glyphicon-envelope"></span></a><span class="hidden-xs">|</span> 
+				<a  class="hidden-xs">Print <span class="glyphicon glyphicon-print"></span></a> 
+			</p>
+		</div>
+	</div>
+</div>
+
+
+<div class="row ">
+	<div class="container">
+          <div class="col-xs-12 col-sm-3 col-md-3 sidebar-offcanvas hidden-xs" id="sidebar">
+          	<div class="list-group">
+                <a  class="list-group-item sideheader">Important Link</a>
+            	<a  class="list-group-item active">Global View</a>
+            	<a  class="list-group-item">Global Transfers</a>
+            	<a  class="list-group-item">Global Transfers History</a>
+            	<a  class="list-group-item">View Future Transfers</a>
+            	<a  class="list-group-item">G T Fees Tariff</a>
+            	<a  class="list-group-item">Add a Country/ Territory</a>
+            	<a  class="list-group-item">Remove a Country/ Territory</a>
+            	<a  class="list-group-item">Help</a>
+            	<a  class="list-group-item">Terms & Conditions</a>
+            	
+            	</div>
+		</div>
+		<div class="col-md-9">
+			
+			<div class="col-md-12 col-sm-9 col-xs-12">
+				<div class="form-nameheader">
+					<hr class="sperate">
+					<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle redlightbg"> 1 </span>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-3 formicon-top ">
+						<span class="cricle whitebg"> 2 </span>
+					</div>
+						<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle gerybg"> 3 </span>
+					</div>
+						<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle gerybg"> 4 </span>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+					<div class="col-md-3 col-sm-3 padding hidden-xs text-center">
+							<span class="subtxt"> Select Country/ Territory </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt reddark"> Transfer details </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt"> Review details </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt"> Confirm and Submit details </span>
+					</div>
+			</div>
+			
+			<div class="col-md-12 col-sm-9 col-xs-12 ">
+                <div ng-app="TransferReq">
+                    <div class="formbg transferdetails">
+                        <form  >
+                            <div class="form-header">
+                                <p> Transfer Details</p>
+                            </div>
+                            <div class="form-body">
+                                <div class="subheader">
+                                    <h3> Account From and To</h3>
+                                    <hr>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-3">
+                                    <label class=""> From</label>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <span class="subtext" ><a > {{fromcountryname}}</a></span>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-3 text-right">
+                                    <!--<span class="subtext" ><a > Check Balance</a></span>-->
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-offset-3 col-sm-offset-4 col-md-8 col-sm-8 col-xs-12 padding">
+                                    <select class="form-control" name="from-account" ng-model="globalTransfer.fromaccount" ng-options="bankacct.accountNo for bankacct in frombankaccts" required />
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-3 col-sm-4 col-xs-3">
+                                    <label class=""> To</label>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <span class="subtext" ><a > {{tocountryname}}</a></span>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-3 text-right">
+                                    <!--<span class="subtext" ><a > Check Balance</a></span>-->
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-offset-3 col-md-8 col-sm-offset-4 col-sm-8 col-xs-12 padding">                                    
+                                    <select class="form-control" name="to-account" ng-model="globalTransfer.toaccount" ng-options="bankacct.accountNo for bankacct in tobankaccts" required />
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="subheader">
+                                    <h3> Currency and Amount</h3>
+                                    <hr>
+                                </div>
+                                <div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                    <label class=""> From Currency </label>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                    <select class="form-control" name="transferfromcurrency" ng-model="globalTransfer.transferfromcurrency" ng-options="transferfromcurrency.currency for transferfromcurrency in tfromcurrency" id=""/>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                    <label class=""> To Currency </label>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                    <select class="form-control" name="transfertocurrency" ng-model="globalTransfer.transfertocurrency" ng-options="transfertocurrency.currency for transfertocurrency in ttocurrency" id=""/>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                    <label class=""> Amount </label>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                    <input type="text" name="amount" id="" ng-model="globalTransfer.amount" class="form-control">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="subheader">
+                                    <h3> Date and Frequancy </h3>
+                                    <hr>
+                                </div>
+                                <!--<div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                    <label class=""> Currency </label>
+                                </div>-->
+                                <div class="col-md-12 col-sm-12 col-xs-12 padding">
+                                    <label class="inline col-md-4 col-sm-4 col-xs-12">
+                                       <input type="radio" ng-model="globalTransfer.transfernow" value="Transfer Now"/>
+                                       <span class="lbl padding-8">Transfer Now</span>
+                                    </label>
+                                    <label class="inline col-md-4 col-sm-4 col-xs-12">
+                                       <input type="radio" ng-model="globalTransfer.transfernow" value="Transfer Later"/>
+                                       <span class="lbl padding-8">Transfer Later</span>
+                                    </label>
+                                    <label class="inline col-md-4 col-sm-4 col-xs-12">
+                                       <input type="radio" ng-model="globalTransfer.transfernow" value="Recurring Transfer"/>
+                                       <span class="lbl padding-8">Create Recurring Transfer</span>
+                                    </label>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="subheader">
+                                    <h3> Transfers Information </h3>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 padding">
+                                    <label class="col-md-3 col-sm-4 col-xs-12 padding">
+                                        Your reference
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                        <input type="text" name="transferinfo" ng-model="globalTransfer.transferinfo" id="" class="form-control" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="clearfix"></div>
+                                <div class="subheader">
+                                    <h3> Additional Information </h3>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 padding">
+                                    <label class="col-md-3 col-sm-4 col-xs-12 padding">
+                                        Your reference
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                        <select class="form-control" name="additioninfo" ng-model="globalTransfer.additioninfo" id="">
+                                            <option value="AUD"> AUD </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class=" col-md-offset-2 col-sm-offset-2 col-md-10 col-sm-10 col-xs-12 text-center padding16">
+                                    <button class="btn btn-default redbtn" ng-click="transferForm(globalTransfer)"> Next </button>
+                                    <!--<a href="#/reviewdetail" class="btn btn-default redbtn"> Next </a>-->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+</script>

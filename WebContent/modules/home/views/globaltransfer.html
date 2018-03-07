@@ -1,0 +1,130 @@
+<div class="row usertxt">
+	<div class="container">
+		<div class="col-md-12 col-sm-12 col-xs-12 text-right">
+			<div class="userinfo">
+				Welcome <span class="username"> {{userid}} </span>
+				 <a href="#/login" class="btn btn-default logout-btn">logout</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div class="row darkred">
+	<div class="container">
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<p>Internet Banking</p>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6 text-right">
+			<p class="usermsg">
+				<a >Your Message <span class="glyphicon glyphicon-envelope"></span></a><span class="hidden-xs">|</span> 
+				<a  class="hidden-xs">Print <span class="glyphicon glyphicon-print"></span></a> 
+			</p>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="row gerybg">
+	<div class="container">
+		<div class="txt">
+			<p class="">HSBC Holdings plc is a British multinational banking and financial services company headquartered in London, United Kingdom. It is the world's second largest bank. </p>
+		</div>
+	</div>
+</div> -->
+
+<div class="row ">
+	<div class="container">
+          <div class="col-xs-12 col-sm-3 col-md-3 sidebar-offcanvas hidden-xs" id="sidebar">
+          	<div class="list-group">
+                <a  class="list-group-item sideheader">Important Link</a>
+            	<a  class="list-group-item active">Global View</a>
+            	<a  class="list-group-item">Global Transfers</a>
+            	<a  class="list-group-item">Global Transfers History</a>
+            	<a  class="list-group-item">View Future Transfers</a>
+            	<a  class="list-group-item">G T Fees Tariff</a>
+            	<a  class="list-group-item">Add a Country/ Territory</a>
+            	<a  class="list-group-item">Remove a Country/ Territory</a>
+            	<a  class="list-group-item">Help</a>
+            	<a  class="list-group-item">Terms & Conditions</a>
+            	<a class="list-group-item">Refer a Friend</a>
+            	
+            	</div>
+		</div>
+		<div class="col-md-9">
+			
+			<div class="col-md-12 col-sm-9 col-xs-12">
+				<div class="form-nameheader">
+					<hr class="sperate">
+					<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle whitebg"> 1 </span>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-3 formicon-top ">
+						<span class="cricle gerybg"> 2 </span>
+					</div>
+						<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle gerybg"> 3 </span>
+					</div>
+						<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle gerybg"> 4 </span>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+					<div class="col-md-3 col-sm-3 padding hidden-xs text-center">
+							<span class="subtxt reddark"> Select Country/ Territory </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt"> Transfer details </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt"> Review details </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt"> Confirm and Submit details </span>
+					</div>
+			</div>
+			<div ng-app="glotransfer">
+                <div class="col-md-12 col-sm-9 col-xs-12 ">
+                    <div class="formbg selectcountry">
+                        <form  >
+                            <div class="form-header">
+                                <p> Select Country/ Territory</p>
+                            </div>
+                            <div class="form-body">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <label class="padding16"> Transfer from:</label>
+                                </div>
+                                <div class="col-md-8 col-sm-9 col-xs-12 padding16">
+                                    <!--<select class="form-control" name="from_country" ng-model="fromcountry" ng-options="country.countryCode for country in countries" required />-->
+                                    <select class="form-control" name="from_country" ng-model="fromcountry" ng-options="country.countryCode for country in fromcountries" required />
+                                    
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <label class="padding16"> Transfer to:</label>
+                                </div>
+                                <div class="col-md-8 col-sm-9 col-xs-12 padding16">
+                                 <!--   <select class="form-control" name="to_country" ng-model="tocountry" ng-options="country.countryCode for country in countries" required />-->
+                                    <select class="form-control" name="to_country" ng-model="tocountry" ng-options="country.countryCode for country in tocountries" required />
+                                    <!--<span ng-show="form.password.$error.required" class="help-block">To Country is required select</span> -->
+                                </div>
+                                <div class="clearfix"></div>
+                               <!--  <div class="col-md-10 col-md-offset-2 col-sm-12 col-xs-12 text-left">
+                                    <p class="txt">HSBC Holdings plc is a British multinational banking and financial services company headquartered in London, United Kingdom. It is the world's second largest bank. </p>
+                                </div> -->
+                                <div class=" col-md-offset-2 col-sm-offset-2 col-md-10 col-sm-10 col-xs-12 text-center padding16">
+                                   <!--<a href="#/tranferReq" class="btn btn-default redbtn"> Next </a>-->
+                                    <button class="btn btn-default redbtn" ng-click="countryFromTo()"> Next </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+<script>
+    
+   
+
+</script>

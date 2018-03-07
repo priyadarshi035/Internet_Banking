@@ -1,0 +1,234 @@
+
+<div class="row usertxt">
+	<div class="container">
+		<div class="col-md-12 col-sm-12 col-xs-12 text-right">
+			<div class="userinfo">
+				Welcome <span class="username">  </span>
+				 <a href="#/login" class="btn btn-default logout-btn">logout</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div class="row darkred">
+	<div class="container">
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<p> Global Funds Transfer</p>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6 text-right">
+			<p class="usermsg">
+				<a >Your Message <span class="glyphicon glyphicon-envelope"></span></a><span class="hidden-xs">|</span> 
+				<a  class="hidden-xs">Print <span class="glyphicon glyphicon-print"></span></a> 
+			</p>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="row gerybg">
+	<div class="container">
+		<div class="txt">
+			<p class="">HSBC Holdings plc is a British multinational banking and financial services company headquartered in London, United Kingdom. It is the world's second largest bank. </p>
+		</div>
+	</div>
+</div> -->
+
+<div class="row ">
+	<div class="container">
+          <div class="col-xs-12 col-sm-3 col-md-3 sidebar-offcanvas hidden-xs" id="sidebar">
+          	<div class="list-group">
+                <a  class="list-group-item sideheader">Important Link</a>
+            	<a  class="list-group-item active">Global View</a>
+            	<a  class="list-group-item">Global Transfers</a>
+            	<a  class="list-group-item">Global Transfers History</a>
+            	<a  class="list-group-item">View Future Transfers</a>
+            	<a  class="list-group-item">G T Fees Tariff</a>
+            	<a  class="list-group-item">Add a Country/ Territory</a>
+            	<a  class="list-group-item">Remove a Country/ Territory</a>
+            	<a  class="list-group-item">Help</a>
+            	<a  class="list-group-item">Terms & Conditions</a>
+          </div>
+		</div>
+		<div class="col-md-9">
+			
+			<div class="col-md-12 col-sm-9 col-xs-12">
+				<div class="form-nameheader">
+					<hr class="sperate">
+					<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle redlightbg"> 1 </span>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-3 formicon-top ">
+						<span class="cricle redlightbg"> 2 </span>
+					</div>
+						<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle whitebg"> 3 </span>
+					</div>
+						<div class="col-md-3 col-sm-3 col-xs-3 formicon-top">
+						<span class="cricle gerybg"> 4 </span>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+					<div class="col-md-3 col-sm-3 padding hidden-xs text-center">
+							<span class="subtxt"> Select Country/ Territory </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt "> Transfer details </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt reddark"> Review details </span>
+					</div>
+					<div class="col-md-3 col-sm-3 padding  hidden-xs text-center">
+							<span class="subtxt"> Confirm and Submit details </span>
+					</div>
+			</div>
+			
+			<div class="col-md-12 col-sm-9 col-xs-12 ">
+                <div ng-app="reviewdetails">
+                    <div class="formbg reviewdetails">
+                        <form >
+                            <div class="form-header">
+                                <p> Reviews Details</p>
+                            </div>
+                            <div class="form-body">
+                                <div class="subheader">
+                                    <h3> Account From and To <!--<span class="edit-btn accto"><a  class="reddark">Edit</a></span>--> </h3>
+                                    
+                                    <hr>
+                                </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-3">
+                                        <label class=""> From </label>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-8">
+                                        <span class="subtext" ><a >  {{ fromcountryname}} </a></span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-offset-3 col-sm-offset-4 col-md-8 col-sm-8 col-xs-12 padding">
+                                        <select class="form-control accto-disable" disabled name="form.fromaccount" id="" >
+                                            <!--<option disabled > -- From Account -- </option>-->
+                                            <option value="" selected> {{reviewData.fromaccount.accountNo}} </option>
+                                        </select>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-3 col-sm-4 col-xs-3">
+                                        <label class=""> To</label>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-8">
+                                        <span class="subtext" ><a > {{ tocountryname}}</a></span>
+                                    </div>
+                                    <!--<div class="col-md-4 col-sm-4 col-xs-3 text-right">
+                                        <span class="subtext" ><a > Check Balance</a></span>
+                                    </div>-->
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-offset-3 col-md-8 col-sm-offset-4 col-sm-8 col-xs-12 padding">
+                                        <select class="form-control accto-disable" disabled name="form.toaccount" id="">
+                                            <option disabled > -- To Account -- </option>
+                                            <option value="UAE" selected> {{reviewData.toaccount.accountNo}} </option>
+                                        </select>
+                                    </div>
+                                <div class="clearfix"></div>
+                                <div class="subheader">
+                                    <h3> Currency and Amount <!--<span class="edit-btn curr"><a  class="reddark">Edit</a></span>--></h3>
+                                    <hr>
+                                </div>
+                                
+                                    <div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                        <label class="">From Currency </label>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                        <select class="form-control curr-disable" disabled name="fromaccount" id="">
+                                            <option selected>{{reviewData.transferfromcurrency.currency}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                 <div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                        <label class="">To Currency </label>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                        <select class="form-control curr-disable" disabled name="fromaccount" id="">
+                                            <option selected>{{reviewData.transfertocurrency.currency}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                        <label class=""> Amount </label>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                        <input type="text" name="amount" disabled id="" class="form-control curr-disable" value="{{reviewData.amount}}">
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                        <label class=""> Fund transfer fee & Tax </label>
+                                    </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                    <input type="text" name="Exchangeamount" id="" disabled class="form-control" value="{{reviewData.exchangeCharges}}">
+                                </div>
+                               
+                                <div class="clearfix"></div>
+                                <div class="subheader">
+                                    <h3> Date and Frequancy <!--<span class="edit-btn datefrq"><a  class="reddark">Edit</a></span>--></h3>
+                                    <hr>
+                                </div>
+                                <!--<div class="col-md-3 col-sm-4 col-xs-12 padding">
+                                    <label class=""> Currency </label>
+                                </div>-->
+                                <div class="col-md-12 col-sm-12 col-xs-12 padding">
+                                    <label class="inline col-md-4 col-sm-4 col-xs-12">
+                                       <input type="radio" disabled name="form.transfernow" class="datefrq-disable" ng-checked="reviewData.transfernow == 'Transfer Now'" />
+                                       <span class="lbl padding-8">Transfer Now</span>
+                                    </label>
+                                    <label class="inline col-md-4 col-sm-4 col-xs-12">
+                                       <input type="radio" disabled name="form.transfernow" class="datefrq-disable" ng-checked="reviewData.transfernow == 'Transfer Later'"/>
+                                       <span class="lbl padding-8">Transfer Later</span>
+                                    </label>
+                                    <label class="inline col-md-4 col-sm-4 col-xs-12">
+                                       <input type="radio" disabled name="form.transfernow" class="datefrq-disable" ng-checked="reviewData.transfernow == 'Create Recurring Transfer'"/>
+                                       <span class="lbl padding-8">Create Recurring Transfer</span>
+                                    </label>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="subheader">
+                                    <h3> Transfers Information <!--<span class="edit-btn transinfo"><a  class="reddark">Edit</a></span>--></h3>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 padding">
+                                    <label class="col-md-3 col-sm-4 col-xs-12 padding">
+                                        Your reference
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                        <input type="text" name="form.transferinfo" disabled id="" class="form-control transinfo-disable" value="{{reviewData.transferinfo}}">
+                                    </div>
+                                </div>
+                                
+                                <div class="clearfix"></div>
+                                <div class="subheader">
+                                    <h3> Additional Information <!--<span class="edit-btn addinfo"><a  class="reddark">Edit</a></span>--></h3>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 padding">
+                                    <label class="col-md-3 col-sm-4 col-xs-12 padding">
+                                        Your reference
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12 padding">
+                                        <select class="form-control addinfo-disable" disabled name="form.additioninfo" id="">
+                                            <option selected> {{reviewData.additioninfo}} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class=" col-md-offset-2 col-sm-offset-2 col-md-10 col-sm-10 col-xs-12 text-center padding16">
+                                    <button class="btn btn-default redbtn" ng-click="goConfirm()"> Submit </button>
+                                    <!-- <a href="#/confirmdetail" class="btn btn-default redbtn" ng-click="Submit()"> Submit </a> -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$("h3 span").click(function(event){
+   event.preventDefault();
+    var edit = $(this).attr('class').split(' ')[1];
+   $('.'+edit+'-disable').prop("disabled", false); // Element(s) are now enabled.
+});
+</script>

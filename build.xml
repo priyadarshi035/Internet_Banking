@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:artifact="antlib:org.apache.maven.artifact.ant" basedir="." default="build" name="FundTransferJ">
+    <property environment="env"/>
+	<!-- directory-properties -->
+        <property name="libs.dir" value="WebContent/WEB-INF/lib" />
+        <property name="src.Dir" value="src"/>
+        <property name="debuglevel" value="source,lines,vars"/>
+        <property name="target" value="1.7"/>
+        <property name="source" value="1.7"/>
+	    <property name="reports.test" value="testreports" />
+	    <property name="junit.output.dir" value="testreports"/>
+	    <property name="test.dir" value="testsrc" />
+	
+	    <condition property="ARCHIVE_DIR" value="${env.ARCHIVE_DIR}" else=".">
+            <isset property="env.ARCHIVE_DIR" />
+        </condition>
+	    <property name="warname" value= "fundTransferJ.war"/>
+          <path id="classpathDir">
+              <pathelement location="bin"/>
+              <fileset dir="WebContent/WEB-INF/lib"> 
+        	           <include name="*.jar"/> 
+    	      </fileset>
+          </path>
+   
+    <property name="cobertura.dir" value="cobertura" />
+		<path id="cobertura.classpath">
+		   <fileset dir="WebContent/WEB-INF/lib">
+		            <include name="cobertura-2.1.1.jar" />
+				  	<include name="*.jar" />
+		   </fileset>
+		</path>
+	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+	
+
+	
+    <target name="init">
+        <mkdir dir="bin"/>
+        <mkdir dir="instrumented"/>
+    	<mkdir dir="cobertura-reports"/>
+	</target>
+	
+    <target name="clean">
+        <delete dir="bin"/>
+		<delete file="${ARCHIVE_DIR}/${warname}" />
+		<delete dir="instrumented"/>
+    	<delete dir="cobertura-reports"/>
+	</target>
+	
+    <target name="build" depends="build-project,build-war"/>
+    <target name="cleanall" depends="clean"/>
+    <target name="build-project" depends="clean,init">
+    	<copy todir="${ARCHIVE_DIR}">
+	      <fileset file="manifest.yml" />
+	    </copy>
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" includeantruntime="false">
+            <src path="src"/>
+            <src path="testsrc"/>
+            <classpath refid="classpathDir"/>
+        </javac>
+    </target>
+ 
+   <target name="build-war" depends="build-project">
+	    <war destfile="${ARCHIVE_DIR}/${warname}" webxml="WebContent/WEB-INF/web.xml">
+	  	<webinf dir="WebContent/WEB-INF">
+	  		<include name="resources"/>
+	    </webinf>
+	  	<fileset dir="WebContent">
+	  		<include name="**/*"/>
+	    </fileset>
+	  	<classes dir="bin"/>
+	  </war>
+   </target>
+   
+    <target name="instrument"  >
+       <path id="cobertura.auxpath">
+		 	<pathelement location="bin"/>
+	   </path>            
+	   <cobertura-instrument todir="instrumented" datafile="cobertura.ser" >
+		    <ignore regex="org.apache.log4j.*" />
+		 	<excludeclasses regex="org.apache.log4j.Logger"></excludeclasses>
+		 	<fileset dir="bin">
+		 	        <include name="**/*.class" />
+		 	        <exclude name="**/*Test.class" />
+		 	</fileset>
+		    <auxClasspath>
+		 		<path refid="cobertura.auxpath" />
+		 	</auxClasspath>
+		 		 		
+	   </cobertura-instrument>
+	</target>
+   
+    <target name="unit-test-2" > 
+	
+	   <junit printsummary="yes" haltonfailure="yes">
+	      <classpath>
+	        <pathelement location="${project.class.path}"/>
+	        <pathelement location="bin"/>
+	        <pathelement path="${java.class.path}"/>
+	      	<fileset dir="WebContent/WEB-INF/lib"> 
+	      	        	<include name="*.jar"/> 
+	      	</fileset>
+	      	
+	      </classpath>
+	      			<formatter type="xml" />
+
+	   	    <batchtest fork="yes" todir="testreports">
+	        <fileset dir="${src.Dir}">
+	          <include name="**/Test_FirstSuiteRunner.java"/>
+	        </fileset>
+	      </batchtest>
+	    </junit>
+	    <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+           <report format="frames" todir="testreports" />
+        </junitreport> 
+		</target>
+		
+	<target name="unit-test-3" > 
+		 
+		   <junit printsummary="yes" haltonfailure="yes">
+		   	<sysproperty key="net.sourceforge.cobertura.datafile" file="${basedir}/cobertura.ser" />
+		   			   	<classpath location="instrumented" />
+		   			   	<classpath location="bin" />
+		   			   	<classpath refid="cobertura.classpath" />
+		        <classpath>
+		        <pathelement location="${project.class.path}"/>
+		        <pathelement location="bin"/>
+		        <pathelement path="${java.class.path}"/>
+		      	<fileset dir="WebContent/WEB-INF/lib"> 
+		      	        	<include name="*.jar"/> 
+		      	</fileset>
+		      	
+		      </classpath>
+		      
+				<formatter type="xml" />
+
+		   	    <batchtest fork="yes" todir="testreports">
+		        <fileset dir="testsrc">
+		          <include name="**/**/*Runner.java"/>
+		        </fileset>
+		      </batchtest>
+
+		    </junit>
+		    <junitreport todir="${junit.output.dir}">
+	            <fileset dir="${junit.output.dir}">
+	                <include name="TEST-*.xml"/>
+	            </fileset>
+	           <report format="frames" todir="testreports" />
+	        </junitreport> 
+			</target> 
+	<target name="GenerateHTMLReport" description="Generate coverage report">
+		 			  		  
+			  <cobertura-report format="xml" destdir="cobertura-reports" >
+			  	<fileset dir="src">
+			  	    <include name="**/*.java" />
+			  	   </fileset>
+			  </cobertura-report>
+		 
+			 </target>
+		
+		
+</project>

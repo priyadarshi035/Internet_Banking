@@ -1,0 +1,49 @@
+<div class="row redbg">
+		<div class="container">
+			<div class="col-md-6 col-sm-6 col-xs-12 hidden-xs">
+				<div class="banner text-right">
+ 				<img src="img/internet-banking.png" class="bannerimg">  
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="login-form">
+					<h1>Internet Banking Application</h1>
+					<p class="subtit"> Please login </p>
+						<div class="row">
+<div ng-show="error" class="alert alert-danger">{{error}}</div>
+<form name="form" role="form">							
+	<div class="col-md-12 col-sm-12 col-xs-12 padding">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <input type="text" name="username" id="username" placeholder="Username/Internet Banking ID" class="form-control" ng-model="username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+	</div>
+<div class="col-md-12 col-xs-12 padding">
+	<div class="col-md-8 col-sm-12 col-xs-12">
+		<input type="password" name="password" id="password" placeholder="Enter password" class="form-control" ng-model="password" required />
+        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>    
+	</div>
+</div>
+<div class="col-md-12 col-xs-12 padding">
+	<div class="col-md-8 col-sm-12 col-xs-12 text-right" style="margin-top: -15px;">
+		<p> <a href="/" class="forgetspass">Forget Username/ Password?</a></p>
+	</div>
+</div>
+<div class="clearfix"></div>
+	<div class="col-md-12 padding submit-section">
+		<div class="col-md-8 col-sm-12 col-xs-12">
+			<button disabled="disabled" ng-click="login()" ng-disabled="form.$invalid || dataLoading" class="btn btn-default login-btn col-md-12 col-xs-12">  <!--ng-disabled="form.$invalid || dataLoading"-->
+			LOGIN</button>
+		</div>
+		<div class="col-md-8 col-sm-12 col-xs-12 padding text-center">
+			<p><a href="#">Register as a new member</a></p>
+		</div>
+    </div>
+</form>
+</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
