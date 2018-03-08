@@ -1,6 +1,6 @@
 applications:
 - disk_quota: 1024M
-  host: fundtransferj
+  random-route: true
   name: FundTransferJ
   path: fundTransferJ.war
   domain: mybluemix.net
